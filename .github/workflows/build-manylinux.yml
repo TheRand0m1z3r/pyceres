@@ -15,6 +15,9 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Required for setuptools_scm to see tags
+          fetch-tags: true
+      - name: Debug git tags
+        run: git tag
       - name: Build docker image
         run: docker build -f Dockerfile.manylinux . -t dplus-ceres-manylinux:latest
       - name: Copy wheels

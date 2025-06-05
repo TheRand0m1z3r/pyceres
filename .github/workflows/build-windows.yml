@@ -16,6 +16,9 @@ jobs:
           uses: actions/checkout@v4
           with:
             fetch-depth: 0 # Required for setuptools_scm to see tags
+            fetch-tags: true
+        - name: Debug git tags
+          run: git tag
         - name: Setup Python
           uses: actions/setup-python@v5
           with:
