@@ -35,5 +35,5 @@ dependencies = [
 ]
 
 [tool.setuptools_scm]
-version_scheme = "release-branch-semver"
+version_scheme = "release"
 local_scheme = "no-local-version"
