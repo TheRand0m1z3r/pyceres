@@ -48,10 +48,10 @@ jobs:
             tag: ${{ github.ref }}
             overwrite: true
             body: "Windows Wheels"
-        - name: Publish to PyPi
-          env:
-            PYPI_PROJECT: dplus-ceres
-          run: |
-            python -m pip install twine
-            export OIDC_TOKEN="${ACTIONS_ID_TOKEN_REQUEST_TOKEN}"
-            twine upload --repository pypi --identity-provider-token "$OIDC_TOKEN" dist/*.whl
+#        - name: Publish to PyPi
+#          env:
+#            PYPI_PROJECT: dplus-ceres
+#          run: |
+#            python -m pip install twine
+#            export OIDC_TOKEN="${ACTIONS_ID_TOKEN_REQUEST_TOKEN}"
+#            twine upload --repository pypi --identity-provider-token "$OIDC_TOKEN" dist/*.whl
