@@ -1,4 +1,5 @@
 setuptools
+setuptools_scm
 numpy<=2.0.2
 Cython
 wheel

@@ -4,6 +4,10 @@ on:
     tags:
       - v*
 
+permissions:
+  id-token: write    # Required for OIDC authentication
+  contents: read  
+
 jobs:
   manylinux-wheels:
     runs-on: ubuntu-latest
@@ -16,8 +20,6 @@ jobs:
         with:
           fetch-depth: 0 # Required for setuptools_scm to see tags
           fetch-tags: true
-      - name: Debug git tags
-        run: git tag
       - name: Build docker image
         run: docker build -f Dockerfile.manylinux . -t dplus-ceres-manylinux:latest
       - name: Copy wheels
@@ -33,7 +35,10 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
           body: "Manylinux Wheels"
-      # - name: Upload release to PyPI
-      #   uses: pypa/gh-action-pypi-publish@release/v1
-      #   with:
-      #     packages-dir: dplus-ceres-wheels #/dplus*.whl
+      - name: Publish to PyPi
+        env:
+          PYPI_PROJECT: dplus-ceres
+        run: |
+          python -m pip install twine
+          export OIDC_TOKEN="${ACTIONS_ID_TOKEN_REQUEST_TOKEN}"
+          twine upload --repository pypi --identity-provider-token "$OIDC_TOKEN" dist/*.whl
