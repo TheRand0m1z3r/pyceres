@@ -35,6 +35,7 @@ dependencies = [
 ]
 
 [tool.setuptools_scm]
+
 #version_scheme = "release"
 #local_scheme = "no-local-version"
 #tag_regex = "^(?:v)?(?P<version>.*)$"
