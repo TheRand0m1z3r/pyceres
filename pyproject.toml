@@ -10,7 +10,8 @@ name = "dplus-ceres"
 dynamic = ["version"]
 description = "A Python wrapper of Ceres 2.0 - for DPlus"
 readme = "README.md"
-license = { file = "LICENSE.txt" }
+#license = "MIT"
+license-files = ["LICENSE.txt"]
 authors = [
     { name = "Eytan Balken", email = "eytan.balken@mail.huji.ac.il" },
     { name = "Devora Witty", email = "devorawitty@chelem.co.il" }
@@ -33,6 +34,8 @@ dependencies = [
     "psutil>=5.6.3",
     "requests>=2.10.0"
 ]
+
+
 
 [tool.setuptools_scm]
 
